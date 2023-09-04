@@ -1,0 +1,11 @@
+{
+    "name": "MouTest",
+    "alias": "moutest",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\MouTest\\Providers\\MouTestServiceProvider"
+    ],
+    "files": []
+}
