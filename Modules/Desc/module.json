@@ -1,0 +1,11 @@
+{
+    "name": "Desc",
+    "alias": "desc",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Desc\\Providers\\DescServiceProvider"
+    ],
+    "files": []
+}

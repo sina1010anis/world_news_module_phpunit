@@ -1,3 +1,7 @@
 {
-    "MouTest": true
+    "MouTest": true,
+    "Front": true,
+    "Filter": true,
+    "User": true,
+    "Desc": true
 }
