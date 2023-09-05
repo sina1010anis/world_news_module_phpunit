@@ -1,6 +1,4 @@
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities; */
-body{
-    background-color: red;
-}
+@import url('./my_style.css');

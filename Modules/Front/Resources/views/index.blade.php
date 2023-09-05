@@ -1,9 +1,7 @@
 @extends('front::layouts.master')
 
 @section('content')
-<button @click="test_app" >test</button>
-<wel></wel>
-    <p>
-        This view is loaded from module: {!! config('front.name') !!}
-    </p>
+    <div class="row">
+        <div class="col-12 p-2"></div>
+    </div>
 @endsection

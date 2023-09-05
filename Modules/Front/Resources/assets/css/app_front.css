@@ -1,3 +1,15 @@
-body{
-    background-color: rebeccapurple;
+@import url('/resources/css/my_style.css');
+
+a{
+    text-decoration: none;
+}
+.hearer{
+    background-color: #f1f1f1;
+}
+.hearer a{
+    height: auto;
+    line-height: 100px;
+}
+.logo{
+    background-color: #d6d6d6;
 }

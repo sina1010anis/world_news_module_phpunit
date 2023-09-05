@@ -9,10 +9,10 @@
        {{-- Laravel Vite - CSS File --}}
        {{-- {{ module_vite('build-front', 'Resources/assets/sass/app.scss') }} --}}
        @vite('Modules/Front/Resources/assets/css/app_front.css')
-
     </head>
-    <body>
-        <div id="app">
+    <body class="p-2">
+        <x-front-header></x-front-header>
+        <div id="app" class="container-xxl">
             @yield('content')
         </div>
         @vite('Modules/Front/Resources/assets/js/app_front.js')
