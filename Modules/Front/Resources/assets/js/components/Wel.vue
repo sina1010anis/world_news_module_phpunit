@@ -7,8 +7,7 @@
 export default {
     name: 'Wel',
     methods: {
-        test_app()
-        {
+        test_app() {
             alert('test')
         }
     },

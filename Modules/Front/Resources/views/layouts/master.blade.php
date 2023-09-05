@@ -8,19 +8,13 @@
 
        {{-- Laravel Vite - CSS File --}}
        {{-- {{ module_vite('build-front', 'Resources/assets/sass/app.scss') }} --}}
-       @vite('resources/css/app.css')
+       @vite('Modules/Front/Resources/assets/css/app_front.css')
 
     </head>
     <body>
         <div id="app">
-            <button @click="test_app" >test</button>
-            <wel></wel>
-            {{-- @yield('content')
-            <h1>@{{version}}</h1> --}}
-
-            {{-- Laravel Vite - JS File --}}
-            {{-- {{ module_vite('build-front', 'Resources/assets/js/app.js') }} --}}
+            @yield('content')
         </div>
-        @vite('Modules/Front/Resources/assets/js/app.js')
+        @vite('Modules/Front/Resources/assets/js/app_front.js')
     </body>
 </html>

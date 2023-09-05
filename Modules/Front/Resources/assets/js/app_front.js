@@ -1,5 +1,5 @@
 import {createApp} from 'vue/dist/vue.esm-bundler';
-import Wel from "./Wel.vue";
+import Wel from "./components/Wel.vue";
 
 
 createApp({
