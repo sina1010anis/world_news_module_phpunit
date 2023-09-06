@@ -11,9 +11,11 @@
        @vite('Modules/Front/Resources/assets/css/app_front.css')
     </head>
     <body class="p-2">
-        <x-front-header></x-front-header>
-        <div id="app" class="container-xxl">
-            @yield('content')
+        <div id="app">
+            <x-front-header></x-front-header>
+            <div class="container-xxl">
+                @yield('content')
+            </div>
         </div>
         @vite('Modules/Front/Resources/assets/js/app_front.js')
     </body>
