@@ -23,7 +23,7 @@ a{
     position: fixed;
     top: 0;
     border-radius: 10px 0 0 10px;
-    right: -250px;
+    right: -300px;
     background-color: #f3f3f3;
     z-index: 3;
 }
@@ -41,4 +41,37 @@ a{
 .menu-mobile i{
     position: relative;
     top: 2px;
+}
+.item-filter-front{
+    transition: 0.2s;
+}
+.box-filter-front , .box-news-front{
+    border: 2px solid #f3f3f3;
+    background-color: #f9f9f9!important;
+}
+.item-filter-front:hover{
+    background-color: #ededed;
+}
+.back-image-min{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 0 10px 10px 0;
+}
+.item-new{
+    border: 2px solid #ededed;
+    border-radius: 10px;
+}
+.btn-more-new{
+    width: 35px;
+    border-radius: 50%;
+    height: 35px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: #bbe4ff;
+}
+.btn-more-new i{
+    color: #000fff;
+
 }

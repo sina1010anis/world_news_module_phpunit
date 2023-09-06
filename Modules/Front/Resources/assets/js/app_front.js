@@ -24,7 +24,7 @@ createApp({
         },
         closeMenuMobile(){
             this.fadeOutHide()
-            $('.menu-mobile').animate({right:'-250px'})
+            $('.menu-mobile').animate({right:'-300px'})
         }
      },components:{
         wel:Wel
