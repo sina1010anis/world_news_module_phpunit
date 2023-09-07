@@ -16,3 +16,4 @@ use Modules\Front\Http\Controllers\FrontController;
 
 
 Route::get('/', [FrontController::class, 'index']);
+Route::get('/sort/{sort}', [FrontController::class, 'sortNews'])->name('sort.posts');
