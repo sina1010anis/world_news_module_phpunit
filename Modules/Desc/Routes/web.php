@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Modules\Desc\Http\Controllers\DescController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +14,6 @@
 |
 */
 
-Route::prefix('desc')->group(function() {
-    Route::get('/', 'DescController@index');
+Route::prefix('/more')->as('more.')->group(function() {
+    Route::get('/{send}', [DescController::class, 'index'])->name('post');
 });

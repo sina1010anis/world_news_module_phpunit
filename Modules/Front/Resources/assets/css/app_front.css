@@ -69,7 +69,12 @@ a{
     position: absolute;
     bottom: 10px;
     left: 10px;
+    transition: 0.2s;
     background-color: #bbe4ff;
+}
+.btn-more-new:hover{
+    background-color: #a5dbff;
+
 }
 .btn-more-new i{
     color: #000fff;

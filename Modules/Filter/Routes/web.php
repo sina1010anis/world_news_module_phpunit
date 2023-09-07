@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Modules\Filter\Http\Controllers\FilterController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +14,6 @@
 |
 */
 
-Route::prefix('menu')->group(function() {
-    Route::get('/', 'FilterController@index');
+Route::prefix('menu')->as('menu.')->group(function() {
+    Route::get('/{send}', [FilterController::class, 'index'])->name('view');
 });

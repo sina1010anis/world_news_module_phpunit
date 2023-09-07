@@ -3,6 +3,7 @@
 namespace Modules\Front\View\Components;
 
 use Illuminate\View\Component;
+use Modules\Front\Entities\Menu;
 
 class Header extends Component
 {
@@ -11,9 +12,10 @@ class Header extends Component
      *
      * @return void
      */
+    public $menus;
     public function __construct()
     {
-        //
+        $this->menus = (new Menu())->oldest('id')->get();
     }
 
     /**
@@ -23,6 +25,6 @@ class Header extends Component
      */
     public function render()
     {
-        return view('front::components.header');
+        return view('front::components.header', ['menus' => $this->menus]);
     }
 }

@@ -1,27 +1,21 @@
 <div class="container-fluid">
     <div class="row">
-        @if(auth()->check())
+        @if(!auth()->check())
             <div class="col-12 d-none d-md-flex p-3 hearer box-header shadow rounded-2" dir="rtl">
-                <a href="/" class="my-font-ISM px-3 my-color-b-600 my-f-13">تکنولوژی</a>
-                <a href="/" class="my-font-ISM px-3 my-color-b-600 my-f-13">تکنولوژی</a>
-                <a href="/" class="my-font-ISM px-3 my-color-b-600 my-f-13">تکنولوژی</a>
-                <a href="/" class="my-font-ISM px-3 my-color-b-600 my-f-13">تکنولوژی</a>
-                <a href="/" class="my-font-ISM px-3 my-color-b-600 my-f-13">تکنولوژی</a>
-                <a href="/" class="my-font-ISM px-3 my-color-b-600 my-f-13">تکنولوژی</a>
-                <a href="/" class="my-font-ISM px-3 my-color-b-600 my-f-13">تکنولوژی</a>
+                @foreach ($menus as $menu)
+                    <a href="{{route('menu.view', ['send' => $menu->name])}}" class="my-font-ISM px-3 my-color-b-600 my-f-13">{{$menu->name}}</a>
+                    {{-- <a href="/menu/{{$menu->name}}" class="my-font-ISM px-3 my-color-b-600 my-f-13">{{$menu->name}}</a> --}}
+                @endforeach
                 <a href="/" class="me-auto logo rounded-2 p-2">
                     <img src="{{url('storage/logo.png')}}" alt="" height="100">
                 </a>
             </div>
         @else
             <div class="col-10 d-none d-md-flex p-3 hearer box-header shadow rounded-2" dir="rtl">
-                <a href="/" class="my-font-ISM px-3 my-color-b-600 my-f-13">تکنولوژی</a>
-                <a href="/" class="my-font-ISM px-3 my-color-b-600 my-f-13">تکنولوژی</a>
-                <a href="/" class="my-font-ISM px-3 my-color-b-600 my-f-13">تکنولوژی</a>
-                <a href="/" class="my-font-ISM px-3 my-color-b-600 my-f-13">تکنولوژی</a>
-                <a href="/" class="my-font-ISM px-3 my-color-b-600 my-f-13">تکنولوژی</a>
-                <a href="/" class="my-font-ISM px-3 my-color-b-600 my-f-13">تکنولوژی</a>
-                <a href="/" class="my-font-ISM px-3 my-color-b-600 my-f-13">تکنولوژی</a>
+                @foreach ($menus as $menu)
+                    <a href="{{route('menu.view', ['send' => $menu->name])}}" class="my-font-ISM px-3 my-color-b-600 my-f-13">{{$menu->name}}</a>
+                    {{-- <a href="/menu/{{$menu->name}}" class="my-font-ISM px-3 my-color-b-600 my-f-13">{{$menu->name}}</a> --}}
+                @endforeach
                 <a href="/" class="me-auto logo rounded-2 p-2">
                     <img src="{{url('storage/logo.png')}}" alt="" height="100">
                 </a>
@@ -50,30 +44,13 @@
 </div>
 
 <div class="menu-mobile d-flex align-content-start flex-column shadow">
-    <a href="/" class=" px-3 my-color-b-600 text-end my-3">
-        <span class="my-font-ISM my-f-13 me-2">تکنولوژی</span>
-        <i class="bi bi-laptop my-f-19"></i>
-    </a>
-    <a href="/" class=" px-3 my-color-b-600 text-end my-3">
-        <span class="my-font-ISM my-f-13 me-2">تکنولوژی</span>
-        <i class="bi bi-laptop my-f-19"></i>
-    </a>
-    <a href="/" class=" px-3 my-color-b-600 text-end my-3">
-        <span class="my-font-ISM my-f-13 me-2">تکنولوژی</span>
-        <i class="bi bi-laptop my-f-19"></i>
-    </a>
-    <a href="/" class=" px-3 my-color-b-600 text-end my-3">
-        <span class="my-font-ISM my-f-13 me-2">تکنولوژی</span>
-        <i class="bi bi-laptop my-f-19"></i>
-    </a>
-    <a href="/" class=" px-3 my-color-b-600 text-end my-3">
-        <span class="my-font-ISM my-f-13 me-2">تکنولوژی</span>
-        <i class="bi bi-laptop my-f-19"></i>
-    </a>
-    <a class=" px-3 text-end my-3 text-danger" @click="closeMenuMobile">
-        <span class="my-font-ISM my-f-13 me-2">بستن منو</span>
-        <i class="bi bi-box-arrow-right my-f-19-i" style="top:4px"></i>
-    </a>
+    @foreach ($menus as $menu)
+        <a href="{{route('menu.view', ['send' => $menu->name])}}" class=" px-3 my-color-b-600 text-end my-3">
+            <span class="my-font-ISM my-f-13 me-2">{{$menu->name}}</span>
+            {!! $menu->icon !!}
+        </a>
+    @endforeach
+
 
 </div>
 <div class="page-hide" @click="closeMenuMobile"></div>
