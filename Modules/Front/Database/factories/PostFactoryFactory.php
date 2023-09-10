@@ -21,16 +21,12 @@ class PostFactoryFactory extends Factory
     public function definition()
     {
         return [
-            'title' => fake()->title(),
+            'title' => fake()->title().' '.fake()->name(),
             'image_min' => 'storage/img_'.rand(1, 5).'.jpg',
             'image_max_mobile' => 'storage/img_'.rand(1, 5).'.jpg',
             'image_max_pc' => 'storage/img_'.rand(1, 5).'.jpg',
-            'body' => fake()->text(1000),
-            'user_id' => 1,
+            'body' => fake()->text(250),
             'menu_id' => rand(1, 7),
-            'select' => null,
-            'like' => rand(0, 10),
-            'view' => rand(0, 20),
         ];
     }
 }

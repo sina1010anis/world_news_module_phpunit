@@ -17,8 +17,6 @@ class FrontController extends Controller
      */
     public function index(Post $post, User $user)
     {
-        // auth()->login($user->find(1));
-        // return auth()->user()->posts;
         return view('front::index', ['posts' => $post->latest('id')->paginate(10)]);
     }
 

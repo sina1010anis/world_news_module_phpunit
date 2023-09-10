@@ -2,10 +2,15 @@
 
 namespace Modules\Front\Entities;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Front\Entities\Sort\SortPosts;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Modules\User\Entities\User;
+use Illuminate\Database\Eloquent\Model;
+use Modules\Front\Entities\Sort\SortPosts;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Front\Database\factories\PostFactoryFactory;
+use Modules\User\Http\Requests\NewPostRequest;
+use Modules\User\Http\Requests\TestNewPostRequest;
 
 
 class Post extends Model
@@ -21,7 +26,9 @@ class Post extends Model
         'image_max_mobile',
         'body',
         'user_id',
-        'menu_id'
+        'menu_id',
+        'view',
+        'like'
     ];
 
     public function user()
@@ -63,15 +70,28 @@ class Post extends Model
         }
         return $this;
     }
-
-    public function checkNewPost()
+    public function checkNewPostCount()
     {
-        $user = (auth()->check()) ? auth()->user() : false;
-        if ($user) {
-            return $user->posts();
-        }else {
-            return $user;
+        if (auth()->check()) {
+            return (User::find(auth()->user()->id)->posts()->whereDate('created_at', Carbon::toDay())->count() < 3) ? true : false;
         }
+        return false;
+    }
+
+    public function new(NewPostRequest|Post $newPostRequest)
+    {
+        Post::create([
+            'title' => $newPostRequest->title,
+            'image_min' => $newPostRequest->image_min,
+            'image_max_mobile' => $newPostRequest->image_max_mobile,
+            'image_max_pc' => $newPostRequest->image_max_pc,
+            'body' => $newPostRequest->body,
+            'menu_id' => $newPostRequest->menu_id,
+            'user_id' => auth()->user()->id,
+            'select' => null,
+            'like' => 0,
+            'view' => 0
+        ]);
     }
 
 }

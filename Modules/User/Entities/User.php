@@ -40,4 +40,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Option::class, 'option_id', 'id');
     }
+
+    public function checkAboveLike(): bool
+    {
+        if (auth()->check()) {
+            return ($this->posts->sum('like') >= 30) ? true : false;
+        }
+        return false;
+    }
+
+    public function likePost(Post $post): bool
+    {
+        if (auth()->check()) {
+            return !! ($post->user->id == auth()->user()->id) ? false : Post::find($post->id)->increment('like', 1);
+        }
+        return false;
+    }
 }
