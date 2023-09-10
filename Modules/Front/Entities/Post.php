@@ -14,11 +14,19 @@ class Post extends Model
     use SortPosts;
 
     public $data;
-    protected $fillable = ['title', 'image_min', 'image_max_pc', 'image_max_mobile', 'body', 'user_id', 'menu_id'];
+    protected $fillable = [
+        'title',
+        'image_min',
+        'image_max_pc',
+        'image_max_mobile',
+        'body',
+        'user_id',
+        'menu_id'
+    ];
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id') ;
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function menu()
@@ -54,6 +62,16 @@ class Post extends Model
                 break;
         }
         return $this;
+    }
+
+    public function checkNewPost()
+    {
+        $user = (auth()->check()) ? auth()->user() : false;
+        if ($user) {
+            return $user->posts();
+        }else {
+            return $user;
+        }
     }
 
 }
