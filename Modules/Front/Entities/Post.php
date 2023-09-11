@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Modules\Front\Entities\Sort\SortPosts;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Front\Database\factories\PostFactoryFactory;
+use Modules\User\Database\factories\EditPostFactoryFactory;
 use Modules\User\Http\Requests\NewPostRequest;
 use Modules\User\Http\Requests\TestNewPostRequest;
 
@@ -78,7 +79,7 @@ class Post extends Model
         return false;
     }
 
-    public function new(NewPostRequest|Post $newPostRequest)
+    public function new(NewPostRequest|Post $newPostRequest): void
     {
         Post::create([
             'title' => $newPostRequest->title,
@@ -94,4 +95,37 @@ class Post extends Model
         ]);
     }
 
+    public function checkUserForPost(Post $post): bool
+    {
+        return !!(auth()->check() && $post->user_id == auth()->user()->id) ? true : false;
+    }
+    public function postDelete(Post $post): bool
+    {
+        if (auth()->check()) {
+            $post->delete();
+            return true;
+        }
+        return false;
+    }
+
+    public function hasPost($post_id): bool
+    {
+        return (Post::whereId($post_id)->count() == 1) ? true : false;
+    }
+
+    public function editPost(NewPostRequest|Post $request,Post $post): bool
+    {
+        if (auth()->check()) {
+            $post->update([
+                'title' => $request->title,
+                'image_min' => $request->image_min,
+                'image_max_mobile' => $request->image_max_mobile,
+                'image_max_pc' => $request->image_max_pc,
+                'body' => $request->body,
+                'menu_id' => $request->menu_id,
+            ]);
+            return true;
+        }
+        return false;
+    }
 }
