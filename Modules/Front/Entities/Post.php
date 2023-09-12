@@ -79,7 +79,7 @@ class Post extends Model
         return false;
     }
 
-    public function new(NewPostRequest|Post $newPostRequest): void
+    public function newPost(NewPostRequest|Post $newPostRequest): void
     {
         Post::create([
             'title' => $newPostRequest->title,
