@@ -4,6 +4,9 @@ namespace Modules\Desc\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Desc\View\Components\Comment;
+use Modules\Desc\View\Components\PageNewComment;
+use Modules\Desc\View\Components\TostComponent;
 
 class DescServiceProvider extends ServiceProvider
 {
@@ -28,6 +31,7 @@ class DescServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
+        $this->loadViewComponentsAs('desc', [Comment::class, PageNewComment::class, TostComponent::class]);
     }
 
     /**

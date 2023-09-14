@@ -19,6 +19,13 @@ class NewCommentRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'title.required' => 'لطفا موضوع را وارد کنید',
+            'body.required' => 'لطفا متن پیام را وارد کنید',
+        ];
+    }
     /**
      * Determine if the user is authorized to make this request.
      *

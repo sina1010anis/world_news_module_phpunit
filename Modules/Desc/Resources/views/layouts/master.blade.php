@@ -6,14 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Module Desc</title>
 
-       {{-- Laravel Vite - CSS File --}}
-       {{-- {{ module_vite('build-desc', 'Resources/assets/sass/app.scss') }} --}}
-
+       @vite('Modules/Front/Resources/assets/css/app_front.css')
     </head>
-    <body>
-        @yield('content')
-
-        {{-- Laravel Vite - JS File --}}
-        {{-- {{ module_vite('build-desc', 'Resources/assets/js/app.js') }} --}}
+    <body class="p-2">
+        <div id="app">
+            <x-front-header></x-front-header>
+            <div class="container-xxl">
+                @yield('content')
+            </div>
+            <x-desc-tost-component></x-desc-tost-component>
+        </div>
+        @vite('Modules/Front/Resources/assets/js/app_front.js')
     </body>
 </html>

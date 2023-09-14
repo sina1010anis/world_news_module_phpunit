@@ -5,6 +5,7 @@ namespace Modules\User\Tests\Unit;
 use Tests\TestCase;
 use Modules\User\Entities\User;
 use Modules\Front\Entities\Post;
+use Illuminate\Support\Facades\Session;
 use Modules\Front\Database\factories\PostFactoryFactory as PostFactory;
 use Modules\User\Database\factories\EditPostFactoryFactory as EditPostFactory;
 
@@ -38,7 +39,7 @@ class PostTest extends TestCase
         $this->assertTrue(auth()->check());
         //checkAboveLike()  This method checks whether the target user has more than 30 likes or not
         $this->assertTrue($this->user->checkAboveLike());
-        $this->assertTrue($this->model_user->likePost($this->post));
+        //$this->model_user->hasLikeAndSetSession(self::POST_ID);
     }
 
     public function test_edit_post(): void

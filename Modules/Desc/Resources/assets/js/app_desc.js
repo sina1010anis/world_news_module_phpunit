@@ -4,13 +4,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import '../css/app_front.css'
 import $ from 'jquery'
-import axios from 'axios';
 
 createApp({
-    data:()=>({
-        is_like:null,
-        tost_data:null
-    }),
     methods:{
         test_app()
         {
@@ -38,37 +33,11 @@ createApp({
         closePageNewComment(){
             $('.page-new-comment').stop().fadeOut();
             $('.page-hide').stop().fadeOut();
-        },
-        tost (text) {
-            this.tost_data = text
-            $('.tost').animate({opacity: 0.8});
-
-            setTimeout(()=>{
-                $('.tost').animate({opacity: 0});
-            }, 3500)
-        },
-        hideTost(){
-            $('.tost').animate({opacity: 0});
-        },
-        likePost(id){
-            axios.post('/more/like/post', {id:id})
-            .then((res)=>{
-                if(res.data == 'Like'){
-                    this.tost('با تشکر از نظر شما.');
-                }if(res.data == 'Delete Like'){
-                    this.tost('شما قبلا این پست را لایک کرده اید و حال لاک شما حذف شد.');
-                }
-                this.is_like = res.data
-            }).catch((res)=>{
-                console.log(res.data);
-            })
         }
      },components:{
         wel:Wel
+     },
+     mounted:()=>{
+
      }
   }).mount("#app");
-
-// app.data({
-//     version: 'V3s vuejs'
-// })
-
