@@ -128,3 +128,24 @@ a{
     left: 50%;
     transform:translate(-50%,-50%) ;
 }
+.box-auth{
+    width: 100%;
+    max-width: 350px;
+
+}
+.image-user, .profile-user{
+    height: 100px;
+    width: 100px;
+}
+.header-profile-menu{
+    background-color: #f3f3f3;
+}
+.item-profile{
+    background-color: #ededed;
+
+}
+
+.bg-menu-user{
+    background-color: #ededed;
+
+}

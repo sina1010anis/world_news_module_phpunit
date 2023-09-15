@@ -1,47 +1,34 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.page')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+@section('index')
+    <div class="w-100 d-flex align-items-center justify-content-center" style="height: 100vh">
+        <div class="box-auth shadow bg-white p-3 rounded-1">
+            <h3 class="my-font-ISM my-color-b-600 text-center">ورود به پنل</h3>
+            <hr>
+            <form action="{{route('login')}}" method="post" dir="rtl">
+                @csrf
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                <div class="mb-3">
+                    <label class="form-check-label my-font-ISM my-f-11 my-color-b-500" for="login_register_email">ایمیل:</label>
+                    <input type="text" name="email" class="form-control  my-font-ISM my-f-11" id="login_register_email">
+                </div>
+                @error('email')
+                    <div class="alert alert-danger my-font-ISM my-f-10 p-1 text-center" dir="rtl" role="alert">
+                        {{$message}}
+                    </div>
+                @enderror
+                <div class="mb-3">
+                    <label class="form-check-label my-font-ISM my-f-11 my-color-b-500" for="login_register_password">رمز عبور:</label>
+                    <input type="password" name="password" class="form-control  my-font-ISM my-f-11" id="login_register_password">
+                </div>
+                @error('password')
+                    <div class="alert alert-danger my-font-ISM my-f-10 p-1 text-center" dir="rtl" role="alert">
+                        {{$message}}
+                    </div>
+                @enderror
+                <button type="submit" class="btn btn-primary my-font-ISM my-f-12">ورود</button>
+            </form>
+
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+@endsection

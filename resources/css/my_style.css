@@ -465,5 +465,16 @@
     transform: scale(1.1);
 }
 
-
+.my-btn-r{
+    background-color: rgb(255 209 209)!important;color: rgb(252 65 65)!important;
+}
+.my-btn-b{
+    background-color: rgb(188, 188, 255)!important;color:blue!important
+}
+.my-btn-d{
+    background-color: rgb(217, 217, 217)!important;color:rgb(46, 46, 46)!important
+}
+.my-btn-g{
+    background-color: rgb(191, 255, 191)!important;color:rgb(0, 136, 0)!important
+}
 /* My Style --------------------------------------------------------------- End */

@@ -26,6 +26,10 @@
                 <i class="bi bi-eye my-f-15 my-pos-rel" style="top: 2px"></i>
                 {{$send->view}}
             </span>
+            <span title="تعداد نمایش">
+                <i class="bi bi-star my-f-15 my-pos-rel" style="top: 2px"></i>
+                {{$send->like}}
+            </span>
             <a href="{{route('menu.view', ['send' => $send->menu->name])}}">{{$send->menu->name}}</a>
         </div>
         <div dir="rtl" class="bg-white mt-2 my-font-ISM my-f-15 my-color-b-800" style="line-height: 30px">

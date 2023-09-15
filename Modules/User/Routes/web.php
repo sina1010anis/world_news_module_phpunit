@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Modules\User\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +14,6 @@
 |
 */
 
-Route::prefix('user')->group(function() {
-    Route::get('/', 'UserController@index');
+Route::prefix('user')->middleware(['auth'])->group(function() {
+    Route::get('/', [UserController::class, 'index']);
 });

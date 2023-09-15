@@ -4,6 +4,7 @@ namespace Modules\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\User\View\Components\HeaderProfile;
 
 class UserServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,7 @@ class UserServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->loadViewComponentsAs('user', [HeaderProfile::class]);
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
