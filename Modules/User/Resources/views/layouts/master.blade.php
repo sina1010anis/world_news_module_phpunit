@@ -15,14 +15,14 @@
                 <x-user-header-profile></x-user-header-profile>
                 <div class="row mt-2 " style="height: 75vh">
                     <div class="col-12 col-md-10 p-1 mt-3 mt-md-0">
-                        <div class="w-100 h-100 shadow border-1 p-3 bg-menu-user rounded-2">
+                        <div class="w-100 h-100 shadow border-1 p-3 bg-white rounded-2">
                             @yield('content')
                         </div>
                     </div>
                     <div class="col-12 col-md-2  p-1 mt-3 mt-md-0">
-                        <div class="w-100 h-100 shadow rounded-2 p-3 text-center bg-menu-user">
-                            <a class="d-block my-font-ISM my-f-13 my-color-b-800 " href="/">خبر های من</a>
-                            <a class="d-block my-font-ISM my-f-13 my-color-b-800 mt-5" href="/">کامنت های من</a>
+                        <div class="w-100 h-100 shadow rounded-2 p-3 text-center">
+                            <a class="d-block my-font-ISM my-f-13 my-color-b-800 " href="{{route('profile')}}">خبر های من</a>
+                            <a class="d-block my-font-ISM my-f-13 my-color-b-800 mt-5" href="{{route('show.comment')}}">کامنت های من</a>
                             <a class="d-block my-font-ISM my-f-13 my-color-b-800 mt-5" href="/">خبر های ذخیره شده</a>
                             <a class="d-block my-font-ISM my-f-13 my-color-b-800 mt-5" href="/">خبر های گزارش شده</a>
                         </div>

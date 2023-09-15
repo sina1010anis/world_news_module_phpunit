@@ -8,6 +8,7 @@ use Modules\User\Entities\User;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Front\Entities\Sort\SortPosts;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Storage;
 use Modules\Front\Database\factories\PostFactoryFactory;
 use Modules\User\Database\factories\EditPostFactoryFactory;
 use Modules\User\Http\Requests\NewPostRequest;
@@ -83,7 +84,7 @@ class Post extends Model
         return false;
     }
 
-    public function newPost(NewPostRequest|Post $newPostRequest): void
+    public function newPost(Post $newPostRequest): void
     {
         Post::create([
             'title' => $newPostRequest->title,
@@ -99,6 +100,24 @@ class Post extends Model
         ]);
     }
 
+    public function newPostReal(NewPostRequest $newPostRequest): void
+    {
+        $image_min = $newPostRequest->file('image_min');
+        $image_max = $newPostRequest->file('image_max_pc');
+        $image_min->storeAs('/public/', $image_min->getClientOriginalName());
+        Post::create([
+            'title' => $newPostRequest->title,
+            'image_min' => '/storage/'.$image_min->getClientOriginalName(),
+            'image_max_mobile' => '/storage/'.$image_max->getClientOriginalName(),
+            'image_max_pc' => '/storage/'.$image_max->getClientOriginalName(),
+            'body' => $newPostRequest->body,
+            'menu_id' => $newPostRequest->menu_id,
+            'user_id' => auth()->user()->id,
+            'select' => null,
+            'like' => 0,
+            'view' => 0
+        ]);
+    }
     public function checkUserForPost(Post $post): bool
     {
         return !!(auth()->check() && $post->user_id == auth()->user()->id) ? true : false;

@@ -57,11 +57,21 @@ createApp({
                     this.tost('با تشکر از نظر شما.');
                 }if(res.data == 'Delete Like'){
                     this.tost('شما قبلا این پست را لایک کرده اید و حال لاک شما حذف شد.');
+                }else{
+                    this.tost('پست های شما زیر 30 لایک دریافت کرده انند.');
                 }
-                this.is_like = res.data
+
             }).catch((res)=>{
                 console.log(res.data);
             })
+        },
+        openPageNewPost(){
+            $('.box-post').stop().fadeIn();
+            $('.page-hide').stop().fadeIn();
+        },
+        closePageNewPost(){
+            $('.box-post').stop().fadeOut();
+            $('.page-hide').stop().fadeOut();
         }
      },components:{
         wel:Wel

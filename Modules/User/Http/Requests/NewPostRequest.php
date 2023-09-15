@@ -16,7 +16,6 @@ class NewPostRequest extends FormRequest
         return [
             'title' => 'required',
             'image_min' => 'required',
-            'image_max_mobile' => 'required',
             'image_max_pc' => 'required',
             'body' => 'required',
             'menu_id' => 'required',

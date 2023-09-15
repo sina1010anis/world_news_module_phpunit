@@ -15,5 +15,7 @@ use Modules\User\Http\Controllers\UserController;
 */
 
 Route::prefix('user')->middleware(['auth'])->group(function() {
-    Route::get('/', [UserController::class, 'index']);
+    Route::get('/', [UserController::class, 'index'])->name('profile');
+    Route::post('/new/post', [UserController::class, 'newPost'])->name('new.post');
+    Route::get('/comment', [UserController::class, 'showComment'])->name('show.comment');
 });
