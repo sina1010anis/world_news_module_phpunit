@@ -12,7 +12,8 @@ class FilterController extends Controller
 
     public function index(Menu $send)
     {
-        dd($send);
+        $menus = Menu::latest('id')->get();
+        return view('filter::index', ['menu' => $send, 'menus' => $menus]);
     }
 
 }

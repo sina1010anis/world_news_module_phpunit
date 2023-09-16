@@ -7,13 +7,16 @@
         <title>Module Filter</title>
 
        {{-- Laravel Vite - CSS File --}}
-       {{-- {{ module_vite('build-filter', 'Resources/assets/sass/app.scss') }} --}}
-
+       {{-- {{ module_vite('build-front', 'Resources/assets/sass/app.scss') }} --}}
+       @vite('Modules/Front/Resources/assets/css/app_front.css')
     </head>
-    <body>
-        @yield('content')
-
-        {{-- Laravel Vite - JS File --}}
-        {{-- {{ module_vite('build-filter', 'Resources/assets/js/app.js') }} --}}
+    <body class="p-2">
+        <div id="app">
+            <x-front-header></x-front-header>
+            <div class="container-xxl">
+                @yield('content')
+            </div>
+        </div>
+        @vite('Modules/Front/Resources/assets/js/app_front.js')
     </body>
 </html>
