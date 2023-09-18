@@ -42,7 +42,7 @@ class PostTest extends TestCase
         //$this->model_user->hasLikeAndSetSession(self::POST_ID);
     }
 
-    public function test_edit_post(): void
+    public function testEditPost(): void
     {
         $this->assertTrue(auth()->check());
         $this->assertTrue($this->model_post->hasPost($this->post->id));
