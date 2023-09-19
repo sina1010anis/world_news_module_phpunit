@@ -21,7 +21,7 @@
             <div class="w-100 rounded-1 p-2 item-profile h-100 shadow">
                 <p class="my-font-ISM my-color-b-700 my-f-16 text-end">جستوجو دقیق</p>
                 <hr>
-                <div dir="rtl" class="bg-white p-2 rounded-1">
+                <div dir="rtl" class=" p-2 rounded-1">
                     <label for="menu_list" class="form-label my-font-ISM my-f-11 my-color-b-500">انتخاب منو :</label>
                     <select class="form-select form-select-sm bg-none my-font-ISM my-f-13 my-color-b-800" id="menu_list" aria-label="Small select example">
                         @foreach ($menus as $menu)
@@ -29,21 +29,21 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-check form-switch rounded-1 bg-white mt-3 d-flex  justify-content-between align-items-center">
+                <div class="form-check form-switch rounded-1 mt-3 d-flex  justify-content-between align-items-center">
                     <input class="form-check-input my-pointer " type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                    <label class="form-check-label my-pointer my-font-ISM my-f-11 my-color-b-500 text-start" dir="rtl" for="flexSwitchCheckChecked">انتخاب سردبیر</label>
+                    <label class="form-check-label my-pointer my-font-ISM my-f-11 my-color-b-500 text-start my-select-none" dir="rtl" for="flexSwitchCheckChecked">انتخاب سردبیر</label>
                 </div>
-                <div>
-                    <div class="form-check form-switch rounded-1 bg-white mt-3 d-flex  justify-content-between align-items-center">
-                        <input class="form-check-input my-pointer " type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                        <label class="form-check-label my-pointer my-font-ISM my-f-11 my-color-b-500 text-start" dir="rtl" for="flexSwitchCheckChecked">انتخاب سردبیر</label>
+                <div style="background-color: none!important">
+                    <div class="form-check form-switch rounded-1 mt-3 d-flex  justify-content-between align-items-center">
+                        <input class="form-check-input my-pointer " type="checkbox" role="switch" id="betdate" checked>
+                        <label class="form-check-label  my-pointer my-font-ISM my-f-11 my-color-b-500 text-start my-select-none" dir="rtl" for="betdate">بین دو تاریخ </label>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center" >
+                        <input type="text" style="background-color: none!important"  class="w-50 my-font-ISM my-f-11 my-color-b-600 text-center" placeholder="از تاریخ">
+                        <input type="text" style="background-color: none!important"  class="w-50 my-font-ISM my-f-11 my-color-b-600 text-center" placeholder="تا تاریخ">
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
-                        <input type="text" class="w-50 my-font-ISM my-f-11 my-color-b-600 text-center" placeholder="از تاریخ">
-                        <input type="text" class="w-50 my-font-ISM my-f-11 my-color-b-600 text-center" placeholder="تا تاریخ">
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <input type="text" class="w-100 my-font-ISM my-f-11 my-color-b-600 text-center" placeholder="پست های تاریخ">
+                        <input type="text"  style="background-color: none!important" class="w-100 my-font-ISM my-f-11 my-color-b-600 text-center" placeholder="پست های تاریخ">
                     </div>
                 </div>
             </div>
