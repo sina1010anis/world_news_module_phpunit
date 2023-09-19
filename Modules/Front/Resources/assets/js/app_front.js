@@ -1,5 +1,7 @@
 import {createApp} from 'vue/dist/vue.esm-bundler';
+import _ from 'lodash'
 import Wel from "./components/Wel.vue";
+import FilterVue from "./components/FilterVue.vue";
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import '../css/app_front.css'
@@ -74,7 +76,8 @@ createApp({
             $('.page-hide').stop().fadeOut();
         }
      },components:{
-        wel:Wel
+        wel:Wel,
+        FilterVue:FilterVue,
      }
   }).mount("#app");
 

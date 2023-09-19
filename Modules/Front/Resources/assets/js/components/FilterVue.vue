@@ -1,30 +1,16 @@
-@extends('filter::layouts.master')
-
-@section('content')
-    <filter-vue :post_menu="{{$menu->posts}}" :menus="{{$menus}}" :menu="{{$menu}}">
-        <template #select>
-            <select class="form-select form-select-sm bg-none my-font-ISM my-f-13 my-color-b-800" id="menu_list" aria-label="Small select example">
-                @foreach ($menus as $menu_one)
-                    <option value="{{$menu_one->id}}" @if($menu->id == $menu_one->id) selected @endif>{{$menu_one->name}}</option>
-                @endforeach
-            </select>
-        </template>
-    </filter-vue>
-    {{-- <div class="row mt-2">
+<template>
+    <div class="row mt-2">
         <div class="col-12 col-md-10 m-0 p-0 p-3 box-news-front rounded-2" dir="rtl">
-            @foreach ($menu->posts as $post)
-                <div class="item-new my-pos-rel  row mt-3" style="height: 150px">
-                    <div class="back-image-min h-100 w-25 col-3" style="background-image: url('/{{$post->image_min}}')"></div>
-                    <div dir="rtl" class="text-new h-100 w-75 p-2 col-9">
-                        <h4 class="my-font-ISM my-color-b-800"><b>{{$post->title}}</b></h4>
-                        <a href="{{route('menu.view', ['send' => $post->menu->name])}}" class="my-color-b-400 my-f-12 my-font-ISM">{{$post->menu->name}}</a>
-                        <p class="my-color-b-800 my-f-11 mt-2 my-font-ISM">
-                            {{Str::limit( $post->body, 250, '...')}}
-                        </p>
-                        <a href="{{route('more.post', ['send' => $post->title])}}" class="btn-more-new d-flex justify-content-center align-items-center"><i class="bi bi-arrow-down-left-circle"></i></a>
-                    </div>
+            <div v-for="(post, index) in post_menu" @key="index" class="item-new my-pos-rel  row mt-3" style="height: 150px">
+                <div class="back-image-min h-100 w-25 col-3" :style="'background-image: url('+'/'+ post.image_min +')'"></div>
+                <div dir="rtl" class="text-new h-100 w-75 p-2 col-9">
+                    <h4 class="my-font-ISM my-color-b-800"><b>{{post.title}}</b></h4>
+                    <p class="my-color-b-800 my-f-11 mt-2 my-font-ISM">
+                        {{ post.body.substring(0, 250)}}
+                     </p>
+                    <a :href="'/more/'+post.title" class="btn-more-new d-flex justify-content-center align-items-center"><i class="bi bi-arrow-down-left-circle"></i></a>
                 </div>
-            @endforeach
+            </div>
         </div>
         <div class="col-12 col-md-2 p-2 order-1 order-md-2">
             <div class="w-100 rounded-1 p-2 item-profile h-100 shadow">
@@ -32,11 +18,7 @@
                 <hr>
                 <div dir="rtl" class=" p-2 rounded-1">
                     <label for="menu_list" class="form-label my-font-ISM my-f-11 my-color-b-500">انتخاب منو :</label>
-                    <select class="form-select form-select-sm bg-none my-font-ISM my-f-13 my-color-b-800" id="menu_list" aria-label="Small select example">
-                        @foreach ($menus as $menu_one)
-                            <option value="{{$menu_one->id}}" @if($menu->id == $menu_one->id) selected @endif>{{$menu_one->name}}</option>
-                        @endforeach
-                    </select>
+                    <slot name="select"></slot>
                 </div>
                 <div class="form-check form-switch rounded-1 mt-3 d-flex  justify-content-between align-items-center">
                     <input class="form-check-input my-pointer " type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
@@ -57,5 +39,26 @@
                 </div>
             </div>
         </div>
-    </div> --}}
-@endsection
+    </div>
+</template>
+
+<script>
+import lodash from 'lodash'
+
+export default {
+    name: 'FilterVue',
+    methods: {
+        test_app() {
+            alert('test')
+        }
+    },
+    props:{
+        post_menu: Object,
+        menu: Object,
+        menus: Object,
+    },
+    comments:{
+        lodash:lodash
+    }
+}
+</script>
