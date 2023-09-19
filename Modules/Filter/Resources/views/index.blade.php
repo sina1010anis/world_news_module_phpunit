@@ -1,15 +1,7 @@
 @extends('filter::layouts.master')
 
 @section('content')
-    <filter-vue :post_menu="{{$menu->posts}}" :menus="{{$menus}}" :menu="{{$menu}}">
-        <template #select>
-            <select class="form-select form-select-sm bg-none my-font-ISM my-f-13 my-color-b-800" id="menu_list" aria-label="Small select example">
-                @foreach ($menus as $menu_one)
-                    <option value="{{$menu_one->id}}" @if($menu->id == $menu_one->id) selected @endif>{{$menu_one->name}}</option>
-                @endforeach
-            </select>
-        </template>
-    </filter-vue>
+    <filter-vue :post_menu="{{$menu->posts}}" :menus="{{$menus}}" :menu="{{$menu}}"></filter-vue>
     {{-- <div class="row mt-2">
         <div class="col-12 col-md-10 m-0 p-0 p-3 box-news-front rounded-2" dir="rtl">
             @foreach ($menu->posts as $post)
