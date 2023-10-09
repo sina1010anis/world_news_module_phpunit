@@ -17,3 +17,22 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/200', function () {
+    return 'ok';
+    return response()->json([
+        'msg' => 'Ok'
+    ], 200);
+});
+Route::get('/500', function () {
+    return response()->json([
+        'msg' => 'Server Error!'
+    ], 500);
+});
+
+Route::get('/400', function () {
+    return response()->json([
+        'msg' => 'Client Error!'
+    ], 400);
+});
